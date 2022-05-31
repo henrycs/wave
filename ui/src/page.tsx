@@ -115,7 +115,7 @@ on(layoutsB, layouts => {
   breakpointsB(bps)
 })
 
-const
+export const
   css = stylesheet({
     flex: {
       position: 'relative',
@@ -203,7 +203,7 @@ const
           cardslots.map(cardslot => {
             const { card: c } = cardslot
             return (
-              <div key={c.id} className={getCardEffectClass(c)} style={toSlotStyle(cardslot)}>
+              <div key={c.id} data-card className={getCardEffectClass(c)} style={toSlotStyle(cardslot)}>
                 <CardView card={c} />
                 <CardMenu name={c.name} commands={c.state.commands} changedB={c.changed} canEdit={hasEditor} />
               </div>
@@ -211,7 +211,7 @@ const
           })
           : null
 
-    return <div data-test={zone.name} className={css.flex} style={toSectionStyle(zone, direction)}>{children}</div>
+    return <div data-test={zone.name} data-section className={css.flex} style={toSectionStyle(zone, direction)}>{children}</div>
   },
   FlexLayout = ({ name, cards }: { name: S, cards: Card[] }) => {
     const layoutIndex = layoutB()
